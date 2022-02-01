@@ -1,15 +1,21 @@
-const people = ['Joker', 'Jay-z', 'Ghandi', 'Robert Downey Junior']
-const quotes = ['The only sensible way to live in this world is without rules.', 'Happiness is when what you think, what you say, and what you do are in harmony.', 'The weak can never forgive. Forgiveness is the attribute of the strong.']
-let date = Math.ceil(Math.random() * 2000)
+let letters = 'a b c d e f g h i j k l m n o p q r s t u v w x y z'.split(" ")
+let rNum = Math.ceil(Math.random() * 2000)
 
-
-function randomize(argument){
-    return argument[Math.floor(Math.random() * (argument.length))]
+generateEmail = (number, domain, country) =>{
+    let email = []
+    for(let i = 0; i < number; i++){
+        if( i < (number - 1)){
+            email.push(letters[Math.ceil(Math.random() * letters.length - 1)])
+        }else{
+            email.push(rNum)
+        }
+    }
+    email.push("@" + domain + "." + country.split("").filter(e => country.indexOf(e) < 2).join(''))
+    console.log(email.join(''))
 }
 
-function generateRandomMessage(){
-    return randomize(quotes) + '" - ' + randomize(people) + ", " + date
-}
 
-console.log(generateRandomMessage())
 
+
+
+generateEmail(10, 'gmail', 'usa')
